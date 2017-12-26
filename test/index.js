@@ -1,4 +1,4 @@
-var expect = require('chai').expect;
+import { expect } from 'chai';
 
 describe('api teste', function() {
     it('should work!', function() {

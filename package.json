@@ -5,10 +5,11 @@
   "main": "src/index.js",
   "scripts": {
     "commit": "git-cz",
-    "test": "nyc mocha",
+    "test": "nyc mocha --require babel-core/register",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "test:watch": "mocha -w",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release pos"
+    "test:watch": "mocha --require babel-core/register -w",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release pos",
+    "build": "babel --out-dir dist src"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,8 @@
   },
   "homepage": "https://github.com/willianszwy/api-scaffold-nodejs#readme",
   "devDependencies": {
+    "babel-cli": "6.26.0",
+    "babel-preset-env": "1.6.1",
     "chai": "4.1.2",
     "commitizen": "2.9.6",
     "coveralls": "3.0.0",
@@ -40,5 +43,10 @@
   },
   "ghooks": {
     "pre-commit": "npm run test"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
